@@ -739,6 +739,24 @@ footer span {
     background: #6f2f2f;
 }
 
+/* Delete button */
+.request-actions button.delete-btn {
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid #e8c5bc;
+    color: #8b3c3c;
+    font-size: 15px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    line-height: 1;
+    transition: background .2s, border-color .2s;
+}
+.request-actions button.delete-btn:hover {
+    background: #fdf0ed;
+    border-color: #c97070;
+    transform: none;
+}
+
 /* Host Badge styling */
 .host-badge {
     font-size: 11px;

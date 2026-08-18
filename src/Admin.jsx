@@ -56,6 +56,16 @@ export default function Admin() {
     } catch (error) { setState('ready'); setMessage(error.message) }
   }
 
+  async function deleteRequest(id, name) {
+    if (!window.confirm(`Delete "${name}" permanently? This cannot be undone.`)) return
+    setState('loading')
+    try {
+      const response = await fetch(`${API_URL}/admin/requests/${id}`, { method: 'DELETE', headers: { 'x-admin-password': password } })
+      if (!response.ok) throw new Error('Could not delete this request.')
+      await load()
+    } catch (error) { setState('ready'); setMessage(error.message) }
+  }
+
   function switchStatus(next) { setStatus(next); load(password, next) }
   function signOut() { sessionStorage.removeItem('32baarAdminPassword'); setPassword(''); setDraft(''); setRequests([]); setState('login') }
   function clearFilters() { setSearchQuery(''); setDateFrom(''); setDateTo(''); setSortOrder('newest') }
@@ -179,6 +189,7 @@ export default function Admin() {
                   ? <button onClick={() => complete(request._id)}>✓ Done</button>
                   : <button className="undone-btn" onClick={() => undone(request._id)}>↺ Undone</button>
                 }
+                <button className="delete-btn" onClick={() => deleteRequest(request._id, request.name)}>🗑</button>
               </div>
             </article>
           ))
