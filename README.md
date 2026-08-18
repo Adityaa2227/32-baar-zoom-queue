@@ -18,3 +18,5 @@ A mobile-first participant request form for the 32 Baar community, backed by a p
 ## Admin API
 
 The dashboard can call `GET /api/admin/requests?status=pending` and `PATCH /api/admin/requests/:id/done` with an `x-admin-password` header. Never expose that password in the public form.
+
+
