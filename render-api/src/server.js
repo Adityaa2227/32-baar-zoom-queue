@@ -30,7 +30,7 @@ app.get('/health', async (_req, res) => {
   res.json({ ok: true, db: dbStatus })
 })
 
-app.post('/api/requests', rateLimit({ windowMs: 60 * 60 * 1000, limit: 5, standardHeaders: true, legacyHeaders: false }), async (req, res, next) => {
+app.post('/api/requests', rateLimit({ windowMs: 60 * 60 * 1000, limit: 5, standardHeaders: true, legacyHeaders: false, message: { message: 'Too many requests. Please try again later.' } }), async (req, res, next) => {
   try {
     const { name = '', phone = '', concern = '', website = '', host = 'Anushka' } = req.body
     if (website) return res.status(400).json({ message: 'Unable to submit this request.' })
