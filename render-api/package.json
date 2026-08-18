@@ -3,6 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "scripts": { "start": "node src/server.js", "dev": "node --watch src/server.js" },
+  "scripts": { "start": "node src/server.js", "dev": "node --watch src/server.js", "build": "echo 'No build step required'" },
   "dependencies": { "cors": "latest", "dotenv": "latest", "express": "latest", "express-rate-limit": "latest", "helmet": "latest", "mongoose": "latest" }
 }
