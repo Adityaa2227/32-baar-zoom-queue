@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: 32baar-support-api
+    runtime: node
+    rootDir: render-api
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
